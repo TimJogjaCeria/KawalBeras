@@ -12,11 +12,17 @@ angular.module('starter.controllers', [])
   // Form data for the login modal
   $scope.loginData = {};
 
-  // Create the login modal that we will use later
+
   $ionicModal.fromTemplateUrl('templates/produsen_modal.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
+  });
+
+    $ionicModal.fromTemplateUrl('templates/distributor_modal.html', {
+    scope: $scope
+  }).then(function(modal_distributor) {
+    $scope.modal_distributor = modal_distributor;
   });
 
   // Triggered in the login modal to close it
@@ -24,9 +30,17 @@ angular.module('starter.controllers', [])
     $scope.modal.hide();
   };
 
+   $scope.close_distributor_modal = function() {
+    $scope.modal_distributor.hide();
+  };
+
   // Open the login modal
   $scope.produsen_modal = function() {
     $scope.modal.show();
+  };
+
+    $scope.distributor_modal = function() {
+    $scope.modal_distributor.show();
   };
 
 
