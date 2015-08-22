@@ -49,14 +49,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
     }
   })
-/*iki
+
   .state('distributor', {
     url: '/distributor',
-    abstract: true,
+    //abstract: true,
     templateUrl: 'templates/distributor.html',
-    controller: 'DistributorCtrl'
+   // controller: 'DistributorCtrl'
   })
-*/
+
   .state('distributor.add', {
     url: '/add',
     views: {
