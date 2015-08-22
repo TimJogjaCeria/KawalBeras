@@ -1,6 +1,7 @@
 .scroll ,.angular-google-map, .angular-google-map-container{
 	height: 100%
 }
+
 .marker-labels {
     color: red;
     background-color: white;

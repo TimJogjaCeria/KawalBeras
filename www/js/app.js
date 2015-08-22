@@ -70,6 +70,38 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
         }
     }
   })
+
+
+
+  .state('dashboard', {
+    url: '/dashboard',
+   // abstract: true,
+    templateUrl: 'templates/dashboard.html',
+    //controller: 'produsenCtrl'
+  })
+
+  .state('list_barang', {
+    url: '/list_barang',
+   // abstract: true,
+    templateUrl: 'templates/list_barang.html',
+    //controller: 'produsenCtrl'
+  })
+
+  .state('input_barang', {
+    url: '/input_barang',
+   // abstract: true,
+    templateUrl: 'templates/input_barang.html',
+    //controller: 'produsenCtrl'
+  })
+
+  .state('profile', {
+    url: '/profile',
+   // abstract: true,
+    templateUrl: 'templates/profile.html',
+    //controller: 'produsenCtrl'
+  })
+
+
   // .state('home', {
   //   url: '/app',
   //   abstract: true,
