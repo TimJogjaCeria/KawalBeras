@@ -94,10 +94,16 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
     //controller: 'produsenCtrl'
   })
 
-  .state('input_barang', {
+  .state('app.input_barang', {
     url: '/input_barang',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/input_barang.html',
+         //controller: 'produsenCtrl'
+      }
+    }
    // abstract: true,
-    templateUrl: 'templates/input_barang.html',
+   // templateUrl: 'templates/input_barang.html',
     //controller: 'produsenCtrl'
   })
 
