@@ -48,23 +48,30 @@ angular.module('starter.controllers', [])
 
 // for produsen controller
 .controller('produsenCtrl', function($scope) {
-  // don't be scared by the image value, its just datauri
   
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
-  $scope.markers = [
-        {
-          id: 1,
-          latitude: 100,
-          longitude: -23,
-          showWindow: false,
-          options: {
-            labelContent: 'Markers id 1',
-            labelAnchor: "22 0",
-            labelClass: "marker-labels"
-          }
-        }];
-  $scope.isFit = $scope.markers > 10 ? true : false;
+  
+  $scope.map = { center: { latitude: -0.7893, longitude: 114 }, zoom: 4 };
+  $scope.markers = [];
+  // dummy random data for markers
+  for (var i = 0; i < 12; i++) {
 
+    $scope.markers.push({
+      id: i,
+      latitude: Math.random() * 10,
+      longitude: parseInt(Math.random() * 10),
+      showWindow: false,
+      options: {
+        labelContent: "Markers id 1",
+        labelAnchor: "22 0",
+        labelClass: "marker-labels"
+      }
+    })
+  }
+  // if more than 10 fill fit automically
+  $scope.isFit = $scope.markers.length > 10 ? true : false;
+  $scope.open = function(){
+    console.log("asdas");
+  }
 })
 
 
