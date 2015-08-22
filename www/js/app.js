@@ -26,18 +26,25 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('home', {
-    url: '/',
-    templateUrl: 'templates/home.html',
+
+   .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
-  .state('produsen', {
-    url: '/produsen',
-   // abstract: true,
-    templateUrl: 'templates/produsen.html',
-    controller: 'produsenCtrl'
+    .state('app.home', {
+    url: '/home',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/produsen.html',
+         controller: 'produsenCtrl'
+      }
+    }
   })
+
+
   // .state('produsen.add', {
   //   url: '/add',
   //   views: {
@@ -163,5 +170,5 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
   // })
   ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+ $urlRouterProvider.otherwise('/app/home');
 });
