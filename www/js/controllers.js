@@ -46,8 +46,26 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('LoginCtrl', function($scope, $timeout, Api, AccessToken,$state) {
+
+  $scope.validateUser = function(){
+    login = new Api({username:$scope.user.username,password:$scope.user.password,action:"token-auth"});
+    login.$save(function(data){
+      console.log(data.token)
+      if(data.token){
+        AccessToken.set(data.token);
+        $state.go('app.home');
+      }
+    })
+  }
+
+})
+
 // for produsen controller
-.controller('produsenCtrl', function($scope, $ionicModal) {
+.controller('produsenCtrl', function($scope, $ionicModal, $timeout, Api) {
+  Api.get({action: "komoditas",def: "jenis"},function(data){
+    console.log(data);
+  })
   $ionicModal.fromTemplateUrl('templates/produsen_modal.html', {
     scope: $scope
   }).then(function(modal) {
@@ -65,6 +83,18 @@ angular.module('starter.controllers', [])
   };
   
   $scope.map = { center: { latitude: -0.7893, longitude: 114 }, zoom: 4 };
+  var onSuccess = function(position) {
+    $scope.map.center = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+    };
+    $scope.map.zoom = 10;
+    $scope.$apply();
+  }
+  function onError(error) {
+      console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+  }
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
   $scope.markers = [];
   // dummy random data for markers
   for (var i = 0; i < 12; i++) {
@@ -82,7 +112,10 @@ angular.module('starter.controllers', [])
     })
   }
   // if more than 10 fill fit automically
-  $scope.isFit = $scope.markers.length > 10 ? true : false;
+  $timeout(function() {
+    // $scope.isFit = $scope.markers.length > 10 ? true : false;
+  }, 3000);
+  
   
 })
 
@@ -100,4 +133,22 @@ angular.module('starter.controllers', [])
 
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
+.factory('Api', ['$resource', function($resource) {
+    return $resource('http://jogjaceria.aijogja.com:80/api/:action/:def/',{
+      action:'@action'
+    });
+}])
+.service('AccessToken', ['storage', '$timeout',function(storage, $timeout) {
+  return {
+    get: function() {
+      return storage.get('token');
+    },
+    set: function(token) {
+      return storage.set('token',token);
+    },
+    "delete": function() {
+      return storage.clearAll()
+    }
+  };
+}]);
