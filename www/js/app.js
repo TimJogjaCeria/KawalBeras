@@ -100,6 +100,12 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
     templateUrl: 'templates/profile.html',
     //controller: 'produsenCtrl'
   })
+   .state('edit_profile', {
+    url: '/edit_profile',
+   // abstract: true,
+    templateUrl: 'templates/edit_profile.html',
+    //controller: 'produsenCtrl'
+  })
 
 
   // .state('home', {
