@@ -28,7 +28,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
   .state('home', {
     url: '/',
-    templateUrl: 'templates/home.html'
+    templateUrl: 'templates/home.html',
+    controller: 'AppCtrl'
   })
 
   .state('produsen', {
