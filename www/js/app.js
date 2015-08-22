@@ -28,7 +28,8 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
   $stateProvider
   .state('home', {
     url: '/',
-    templateUrl: 'templates/home.html'
+    templateUrl: 'templates/home.html',
+    controller: 'AppCtrl'
   })
 
   .state('produsen', {
@@ -49,14 +50,14 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
         }
     }
   })
-/*iki
+
   .state('distributor', {
     url: '/distributor',
-    abstract: true,
+    //abstract: true,
     templateUrl: 'templates/distributor.html',
-    controller: 'DistributorCtrl'
+   // controller: 'DistributorCtrl'
   })
-*/
+
   .state('distributor.add', {
     url: '/add',
     views: {

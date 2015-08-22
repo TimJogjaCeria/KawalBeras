@@ -1,4 +1,3 @@
-/* Empty. Add your own CSS if you like */
-.map-view { 
-  height: 1000px; 
+.scroll ,.angular-google-map, .angular-google-map-container{
+	height: 100%
 }
