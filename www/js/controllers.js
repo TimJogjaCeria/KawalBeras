@@ -50,25 +50,21 @@ angular.module('starter.controllers', [])
 .controller('produsenCtrl', function($scope) {
   // don't be scared by the image value, its just datauri
   
-  // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8, };
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
   $scope.markers = [
         {
           id: 1,
-          latitude: 45,
-          longitude: -74,
+          latitude: 100,
+          longitude: -23,
           showWindow: false,
           options: {
-            animation: 1,
             labelContent: 'Markers id 1',
             labelAnchor: "22 0",
             labelClass: "marker-labels"
           }
         }];
-  var bounds = new google.maps.LatLngBounds();
-  for (var i in markers) // your marker list here
-      bounds.extend(markers[i].position) // your marker position, must be a LatLng instance
+  $scope.isFit = $scope.markers > 10 ? true : false;
 
-  map.fitBounds(bounds); // map should be your map class
 })
 
 
