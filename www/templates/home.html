@@ -1,21 +1,16 @@
 <ion-view view-title="Home">
   <ion-content>
-    <h1>Barang Terbaru</h1>
-     <div class="list">
-
-        <a ng-repeat="item in items" 
-           href="#/{{item.id}}"
-           class="item item-thumbnail-left">
-
-          <img ng-src="{{ item.image }}">
-          <h2>{{ item.album }}</h2>
-          <h4>{{ item.artist }}</h4>
-          <button class="button button-small button-positive">
-  button-positive
+    <h1>Kawal Beras</h1>
+     <div class="list list-inset">
+  <button class="button button-outline button-positive">
+  Produsen / Petani
 </button>
-        </a>
-
-      </div>
+</div>
+<div class="list list-inset">
+  <button class="button button-outline button-positive">
+  Distributor
+</button>
+</div>
 
   </ion-content>
 </ion-view>

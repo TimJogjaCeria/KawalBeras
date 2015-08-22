@@ -33,11 +33,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('produsen', {
     url: '/produsen',
-    abstract: true,
+   // abstract: true,
     templateUrl: 'templates/produsen.html',
-    controller: 'ProdusenCtrl'
+   // controller: 'ProdusenCtrl'
   })
-
   .state('produsen.add', {
     url: '/add',
     views: {
@@ -50,14 +49,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
     }
   })
-
+/*iki
   .state('distributor', {
     url: '/distributor',
     abstract: true,
     templateUrl: 'templates/distributor.html',
     controller: 'DistributorCtrl'
   })
-
+*/
   .state('distributor.add', {
     url: '/add',
     views: {
@@ -125,5 +124,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   // })
   ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/');
 });
