@@ -54,6 +54,14 @@ angular.module('starter.controllers', [])
   
 })
 
+// for produsen controller
+.controller('produsenCtrl', function($scope) {
+  // don't be scared by the image value, its just datauri
+  
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+  
+})
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
