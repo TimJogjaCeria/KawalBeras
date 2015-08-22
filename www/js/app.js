@@ -38,18 +38,18 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
     templateUrl: 'templates/produsen.html',
     controller: 'produsenCtrl'
   })
-  .state('produsen.add', {
-    url: '/add',
-    views: {
-        'modal@': {
-            templateUrl:
-              function (stateParams) {
-                $('#myModal').modal('toggle');
-                return 'templates/addprodusen.html';
-              }
-        }
-    }
-  })
+  // .state('produsen.add', {
+  //   url: '/add',
+  //   views: {
+  //       'modal@': {
+  //           templateUrl:
+  //             function (stateParams) {
+  //               $('#myModal').modal('toggle');
+  //               return 'templates/addprodusen.html';
+  //             }
+  //       }
+  //   }
+  // })
 
   .state('distributor', {
     url: '/distributor',
@@ -58,18 +58,18 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
    // controller: 'DistributorCtrl'
   })
 
-  .state('distributor.add', {
-    url: '/add',
-    views: {
-        'modal@': {
-            templateUrl:
-              function (stateParams) {
-                $('#myModal').modal('toggle');
-                return 'templates/addprodusen.html';
-              }
-        }
-    }
-  })
+  // .state('distributor.add', {
+  //   url: '/add',
+  //   views: {
+  //       'modal@': {
+  //           templateUrl:
+  //             function (stateParams) {
+  //               $('#myModal').modal('toggle');
+  //               return 'templates/addprodusen.html';
+  //             }
+  //       }
+  //   }
+  // })
 
 
 
@@ -80,8 +80,8 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps'])
     //controller: 'produsenCtrl'
   })
 
-  .state('list_barang', {
-    url: '/list_barang',
+  .state('produsen.add', {
+    url: '/add',
    // abstract: true,
     templateUrl: 'templates/list_barang.html',
     //controller: 'produsenCtrl'

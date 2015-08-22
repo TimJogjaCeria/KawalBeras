@@ -47,8 +47,22 @@ angular.module('starter.controllers', [])
 })
 
 // for produsen controller
-.controller('produsenCtrl', function($scope) {
-  
+.controller('produsenCtrl', function($scope, $ionicModal) {
+  $ionicModal.fromTemplateUrl('templates/produsen_modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.close_produsen_modal = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.produsen_modal = function() {
+    $scope.modal.show();
+  };
   
   $scope.map = { center: { latitude: -0.7893, longitude: 114 }, zoom: 4 };
   $scope.markers = [];
@@ -69,9 +83,19 @@ angular.module('starter.controllers', [])
   }
   // if more than 10 fill fit automically
   $scope.isFit = $scope.markers.length > 10 ? true : false;
-  $scope.open = function(){
-    console.log("asdas");
-  }
+  
+})
+
+.controller('produsenAddCtrl', function($scope, $ionicModal) {
+    // Load the modal from the given template URL
+    $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
+        $scope.modal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });  
 })
 
 
