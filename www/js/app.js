@@ -26,60 +26,104 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+  .state('home', {
+    url: '/',
+    templateUrl: 'templates/home.html'
+  })
 
-    .state('app', {
-    url: '/app',
+  .state('produsen', {
+    url: '/produsen',
     abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    templateUrl: 'templates/produsen.html',
+    controller: 'ProdusenCtrl'
   })
 
-    .state('app.home', {
-    url: '/home',
+  .state('produsen.add', {
+    url: '/add',
     views: {
-      'menuContent': {
-        templateUrl: 'templates/home.html',
-         controller: 'homeCtrl'
-      }
-    }
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.tambah_barang', {
-      url: '/tambah_barang',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/tambah_barang.html'
+        'modal@': {
+            templateUrl:
+              function (stateParams) {
+                $('#myModal').modal('toggle');
+                return 'templates/addprodusen.html';
+              }
         }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
     }
-  });
+  })
+
+  .state('distributor', {
+    url: '/distributor',
+    abstract: true,
+    templateUrl: 'templates/distributor.html',
+    controller: 'DistributorCtrl'
+  })
+
+  .state('distributor.add', {
+    url: '/add',
+    views: {
+        'modal@': {
+            templateUrl:
+              function (stateParams) {
+                $('#myModal').modal('toggle');
+                return 'templates/addprodusen.html';
+              }
+        }
+    }
+  })
+  // .state('home', {
+  //   url: '/app',
+  //   abstract: true,
+  //   templateUrl: 'templates/menu.html',
+  //   controller: 'AppCtrl'
+  // })
+
+  // .state('app.home', {
+  //   url: '/home',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/home.html',
+  //        controller: 'homeCtrl'
+  //     }
+  //   }
+  // })
+
+  // .state('app.search', {
+  //   url: '/search',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/search.html'
+  //     }
+  //   }
+  // })
+
+  // .state('app.tambah_barang', {
+  //     url: '/tambah_barang',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/tambah_barang.html'
+  //       }
+  //     }
+  //   })
+  //   .state('app.playlists', {
+  //     url: '/playlists',
+  //     views: {
+  //       'menuContent': {
+  //         templateUrl: 'templates/playlists.html',
+  //         controller: 'PlaylistsCtrl'
+  //       }
+  //     }
+  //   })
+
+  // .state('app.single', {
+  //   url: '/playlists/:playlistId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/playlist.html',
+  //       controller: 'PlaylistCtrl'
+  //     }
+  //   }
+  // })
+  ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });
