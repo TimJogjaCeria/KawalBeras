@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
 })
 
 // for produsen controller
-.controller('produsenCtrl', function($scope, $ionicModal) {
+.controller('produsenCtrl', function($scope, $ionicModal, $timeout) {
   $ionicModal.fromTemplateUrl('templates/produsen_modal.html', {
     scope: $scope
   }).then(function(modal) {
@@ -65,6 +65,18 @@ angular.module('starter.controllers', [])
   };
   
   $scope.map = { center: { latitude: -0.7893, longitude: 114 }, zoom: 4 };
+  var onSuccess = function(position) {
+    $scope.map.center = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+    };
+    $scope.map.zoom = 10;
+    $scope.$apply();
+  }
+  function onError(error) {
+      console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+  }
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
   $scope.markers = [];
   // dummy random data for markers
   for (var i = 0; i < 12; i++) {
@@ -82,7 +94,10 @@ angular.module('starter.controllers', [])
     })
   }
   // if more than 10 fill fit automically
-  $scope.isFit = $scope.markers.length > 10 ? true : false;
+  $timeout(function() {
+    // $scope.isFit = $scope.markers.length > 10 ? true : false;
+  }, 3000);
+  
   
 })
 
