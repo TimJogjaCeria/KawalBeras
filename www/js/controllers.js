@@ -119,6 +119,49 @@ angular.module('starter.controllers', [])
   
 })
 
+
+
+
+
+
+
+.controller('profileController', function($scope, $ionicModal, $timeout, Api) {
+  Api.get({action: "profile"},function(data){
+    //console.log(data);
+    $scope.prof= data;
+  })  
+})
+
+
+.controller('barangController', function($scope, $ionicModal, $timeout, Api) {
+ $scope.createBarang = function(barang) {
+
+        var results = Api.save({action: "komoditas",def: "barang",barang},function(barang){
+    //console.log(data);
+   // $scope.prof= data;
+  })  
+    }  
+})
+
+
+
+.controller('edit_profileController', function($scope, $ionicModal, $timeout, Api) {
+  Api.get({action: "profile"},function(data){
+    //console.log(data);
+    $scope.prof= data;
+  })  
+
+  $scope.updateProfile = function(prof) {  
+
+    alert("fd");
+      
+        //console.log(data);
+
+    
+    //  alert(result);
+  } 
+})
+
 .controller('produsenAddCtrl', function($scope, $ionicModal) {
     // Load the modal from the given template URL
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
@@ -136,7 +179,8 @@ angular.module('starter.controllers', [])
 })
 .factory('Api', ['$resource', function($resource) {
     return $resource('http://jogjaceria.aijogja.com:80/api/:action/:def/',{
-      action:'@action'
+      action:'@action',
+      def:'@def'
     });
 }])
 .service('AccessToken', ['storage', '$timeout',function(storage, $timeout) {

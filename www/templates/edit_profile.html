@@ -3,16 +3,22 @@
    
     <div class="list">
   <label class="item item-input">
-    <input type="text" placeholder="Nama">
+    <input type="text" placeholder="Nama" ng-model="prof.username" >
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="Telpon">
+    <input type="text" placeholder="Telpon" ng-model="prof.phone_number" >
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="Email">
+    <input type="text" placeholder="Email" ng-model="prof.email" >
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Latitude" ng-model="prof.latitude" >
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Longitude" ng-model="prof.longitude" >
   </label>
   
-  <button class="button button-full button-positive">
+  <button class="button button-full button-positive"  ng-click="updateProfile(prof);">
   Submit
 </button>
 </div>
