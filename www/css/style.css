@@ -2,7 +2,7 @@
 	height: 100%
 }
 
-.marker-labels {
+.marker-labels{
     color: red;
     background-color: white;
     font-family: "Lucida Grande", "Arial", sans-serif;
@@ -11,4 +11,10 @@
     text-align: center;
     border: 1px solid black;
     white-space: nowrap;
+}
+.marker-labels p{
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	
 }

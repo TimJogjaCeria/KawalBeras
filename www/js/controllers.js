@@ -62,10 +62,49 @@ angular.module('starter.controllers', [])
 })
 
 // for produsen controller
-.controller('produsenCtrl', function($scope, $ionicModal, $timeout, Api) {
-  Api.get({action: "komoditas",def: "jenis"},function(data){
-    console.log(data);
+.controller('produsenCtrl', function($scope, $ionicModal, $timeout, Api, $http) {
+  $scope.markers = []
+  Api.query({action: "komoditas",def: "barang"},function(data){
+    getDetail(data)
+    // if(data.next){
+    //   reFind(data.next)
+    // }
   })
+  reFind = function(url){
+    $http.get(url,function(data){
+      getDetail(data.results)
+      if(data.next){
+        reFind(data.next)
+      }
+    })
+  }
+  getDetail = function(data){
+    // var uniq = _.pluck(_.uniq(data, 'user.id'),'user.id');
+    // console.log(uniq);
+    _.each(data,function(dt){
+      // dt = _.merge(dt, dt.user)
+      // options: {
+  //       labelContent: "Markers id 1",
+  //       labelAnchor: "22 0",
+  //       labelClass: "marker-labels"
+  //     }
+      if(dt.latitude == 0){
+        dt.latitude = dt.user.latitude;
+        dt.longitude = dt.user.longitude;
+      }
+      dt.options = {
+        labelContent: "<p class='user'>"+dt.user.username+"</p><p class='kind'>"+dt.jenis+"</p><p class='price-box'><div class='stock'>"+dt.stok+"</div><div class='price'>"+dt.price+"</div></p>",
+        // labelAnchor: "22 0",
+        labelClass: "marker-labels"
+      }
+      console.log(dt);
+      $scope.markers.push(dt)
+    })
+  }
+
+  function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+  }
   $ionicModal.fromTemplateUrl('templates/produsen_modal.html', {
     scope: $scope
   }).then(function(modal) {
@@ -95,22 +134,22 @@ angular.module('starter.controllers', [])
       console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
   }
   navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  $scope.markers = [];
+  
   // dummy random data for markers
-  for (var i = 0; i < 12; i++) {
+  // for (var i = 0; i < 12; i++) {
 
-    $scope.markers.push({
-      id: i,
-      latitude: Math.random() * 10,
-      longitude: parseInt(Math.random() * 10),
-      showWindow: false,
-      options: {
-        labelContent: "Markers id 1",
-        labelAnchor: "22 0",
-        labelClass: "marker-labels"
-      }
-    })
-  }
+  //   $scope.markers.push({
+  //     id: i,
+  //     latitude: Math.random() * 10,
+  //     longitude: parseInt(Math.random() * 10),
+  //     showWindow: false,
+  //     options: {
+  //       labelContent: "Markers id 1",
+  //       labelAnchor: "22 0",
+  //       labelClass: "marker-labels"
+  //     }
+  //   })
+  // }
   // if more than 10 fill fit automically
   $timeout(function() {
     // $scope.isFit = $scope.markers.length > 10 ? true : false;
@@ -136,7 +175,9 @@ angular.module('starter.controllers', [])
 })
 .factory('Api', ['$resource', function($resource) {
     return $resource('http://jogjaceria.aijogja.com:80/api/:action/:def/',{
-      action:'@action'
+      action:'@action',
+      def:'@def',
+      ids:'@ids'
     });
 }])
 .service('AccessToken', ['storage', '$timeout',function(storage, $timeout) {
