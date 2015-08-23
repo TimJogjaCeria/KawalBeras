@@ -17,6 +17,9 @@
   </label>
 
   <label class="item item-input">
+    <select ng-model="barang.komoditas_id">
+      <option ng-repeat="j in jenis" value="{{j.id}}">{{j.nama}}</option>
+    </select>
     <input type="text" placeholder="Jenis" ng-model="barang.jenis">
   </label>
   <label class="item item-input">

@@ -213,7 +213,11 @@ angular.module('starter.controllers', [])
 
 
 .controller('barangController', function($scope, $ionicModal, $timeout, Api) {
- $scope.createBarang = function(barang) {
+   Api.query({action:"komoditas",def: "jenis"},function(j){
+    console.log(j);
+    $scope.jenis = j;
+  })
+  $scope.createBarang = function(barang) {
         barang = _.merge(barang,{action: "komoditas",def: "barang"})
         var results = Api.save(barang,function(data){
     //console.log(data);
@@ -225,6 +229,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('edit_profileController', function($scope, $ionicModal, $timeout, Api) {
+ 
   Api.get({action: "profile"},function(data){
     //console.log(data);
     $scope.prof= data;
