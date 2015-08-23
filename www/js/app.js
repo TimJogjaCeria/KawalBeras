@@ -51,6 +51,37 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps','n
     }
   })
 
+  .state('app.profile', {
+    url: '/profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/profile.html',
+        controller: 'profileController'
+      }
+    }
+  })
+
+    .state('app.edit_profile', {
+    url: '/edit_profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/edit_profile.html',
+        controller: 'edit_profileController'
+      }
+    }
+  })
+
+    .state('app.list_barang', {
+    url: '/list_barang',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/list_barang.html',
+       //  controller: 'produsenCtrl'
+      }
+    }
+  })
+
+
 
   // .state('produsen.add', {
   //   url: '/add',
@@ -106,7 +137,7 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps','n
     views: {
       'menuContent': {
         templateUrl: 'templates/input_barang.html',
-         //controller: 'produsenCtrl'
+         controller: 'barangController'
       }
     }
    // abstract: true,
@@ -114,18 +145,7 @@ angular.module('starter', ['ionic', 'starter.controllers','uiGmapgoogle-maps','n
     //controller: 'produsenCtrl'
   })
 
-  .state('profile', {
-    url: '/profile',
-   // abstract: true,
-    templateUrl: 'templates/profile.html',
-    //controller: 'produsenCtrl'
-  })
-   .state('edit_profile', {
-    url: '/edit_profile',
-   // abstract: true,
-    templateUrl: 'templates/edit_profile.html',
-    //controller: 'produsenCtrl'
-  })
+
 
 
   // .state('home', {

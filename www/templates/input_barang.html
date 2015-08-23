@@ -2,19 +2,40 @@
   <ion-content>
    
     <div class="list">
+
+      <label class="item item-input item-select">
+    <div class="input-label">
+      Komoditas
+    </div>
+    <select ng-model="barang.komoditas_id">
+      <option></option>
+      <option selected value="1">Beras</option>
+      <option>Gula</option>
+      <option>Daging</option>
+      <option>Minyak Goreng</option>
+    </select>
+  </label>
+
   <label class="item item-input">
-    <input type="text" placeholder="Komoditas">
+    <input type="text" placeholder="Jenis" ng-model="barang.jenis">
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="Jenis">
+    <input type="text" placeholder="Nama" ng-model="barang.nama">
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="Harga">
+    <input type="text" placeholder="Stok" ng-model="barang.stok">
   </label>
   <label class="item item-input">
-    <input type="text" placeholder="Lokasi">
+    <input type="text" placeholder="Price" ng-model="barang.price">
   </label>
-  <button class="button button-full button-positive">
+  <label class="item item-input">
+    <input type="text" placeholder="Latitude" ng-model="barang.latitude">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Longitude" ng-model="barang.longitude">
+  </label>
+
+  <button class="button button-full button-positive" ng-click="createBarang(barang);" >
   Submit
 </button>
 </div>

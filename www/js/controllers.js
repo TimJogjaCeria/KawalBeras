@@ -158,6 +158,49 @@ angular.module('starter.controllers', [])
   
 })
 
+
+
+
+
+
+
+.controller('profileController', function($scope, $ionicModal, $timeout, Api) {
+  Api.get({action: "profile"},function(data){
+    //console.log(data);
+    $scope.prof= data;
+  })  
+})
+
+
+.controller('barangController', function($scope, $ionicModal, $timeout, Api) {
+ $scope.createBarang = function(barang) {
+        barang = _.merge(barang,{action: "komoditas",def: "barang"})
+        var results = Api.save(barang,function(data){
+    //console.log(data);
+   // $scope.prof= data;
+        })
+    }  
+})
+
+
+
+.controller('edit_profileController', function($scope, $ionicModal, $timeout, Api) {
+  Api.get({action: "profile"},function(data){
+    //console.log(data);
+    $scope.prof= data;
+  })  
+
+  $scope.updateProfile = function(prof) {  
+
+    alert("fd");
+      
+        //console.log(data);
+
+    
+    //  alert(result);
+  } 
+})
+
 .controller('produsenAddCtrl', function($scope, $ionicModal) {
     // Load the modal from the given template URL
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
