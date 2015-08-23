@@ -79,9 +79,30 @@ angular.module('starter.controllers', [])
     })
   }
   getDetail = function(data){
-    // var uniq = _.pluck(_.uniq(data, 'user.id'),'user.id');
-    // console.log(uniq);
-    _.each(data,function(dt){
+    var golek = _.groupBy(data, 'user.id');
+    var group = [];
+    var cari = []
+    for (var v in golek) {
+      cari.push(v)
+      // group.push(v[0].user.id)
+    };
+    _.each(cari,function(c){
+      console.log(golek[c])
+      group.push(golek[c][0].user.id)
+    })
+    // var group = _.pluck(_.groupBy(data, 'user.id'),'user.id');
+    console.log(group);
+    var uniq = _.pluck(_.uniq(data, 'user.id'),'user.id');
+    console.log(uniq);
+    var notIn = _.pull(group,uniq);
+    console.log(notIn);
+    common = _.filter(data, function(n) {
+      return !isInArray(n.user.id,notIn);
+    })
+    byUser = _.filter(data, function(n) {
+      return !isInArray(n.user.id,notIn);
+    })
+    _.each(common,function(dt){
       // dt = _.merge(dt, dt.user)
       // options: {
   //       labelContent: "Markers id 1",
@@ -99,6 +120,25 @@ angular.module('starter.controllers', [])
       }
       console.log(dt);
       $scope.markers.push(dt)
+    })
+    _.each(notIn,function(dt1){
+      findUser =  _.filter(data, function(n) {
+        return n.user.id === dt1
+      })
+      var box = ""
+      var i = _.findIndex(data, function(chr) {
+        return chr.user.id == dt1;
+      });
+      datas = data[i].user;
+      _.each(findUser,function(u,ind){
+        box += (ind === 0 ? "<p class='user'>"+u.user.username+"</p>": '')+"<p class='kind'>"+u.jenis+"</p><p class='price-box'><div class='stock'>"+u.stok+"</div><div class='price'>"+u.price+"</div></p>";
+      })
+      datas.options = {
+        labelContent: box,
+        // labelAnchor: "22 0",
+        labelClass: "marker-labels"
+      }
+      $scope.markers.push(datas)
     })
   }
 
