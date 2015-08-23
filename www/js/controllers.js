@@ -131,7 +131,7 @@ angular.module('starter.controllers', [])
       });
       datas = data[i].user;
       _.each(findUser,function(u,ind){
-        box += (ind === 0 ? "<p class='user'>"+u.user.username+"</p>": '')+"<p class='kind'>"+u.jenis+"</p><p class='price-box'><div class='stock'>"+u.stok+"</div><div class='price'>"+u.price+"</div></p>";
+        box += (ind === 0 ? "<p class='user'>"+u.user.username+"</p>": '')+"<p class='kind'>"+u.jenis+"</p><p class='price-box'><div class='stock'>"+u.stok+"</div><div class='price'>"+u.price+"</div></p><div class='line'></div>";
       })
       datas.options = {
         labelContent: box,
